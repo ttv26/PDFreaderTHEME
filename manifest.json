@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Warm Dark PDF",
+  "version": "1.0",
+  "description": "Automatically applies a warm dark theme to PDFs.",
+  "permissions": ["storage", "activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*/*.pdf", "file:///*/*.pdf"],
+      "all_frames": true,
+      "js": ["content.js"]
+    }
+  ]
+}
