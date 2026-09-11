@@ -2,17 +2,53 @@
 <html>
 <head>
   <style>
-    body { width: 180px; padding: 15px; font-family: system-ui, sans-serif; text-align: center; }
+    body { width: 240px; padding: 15px; font-family: system-ui, sans-serif; background: #222; color: #eee; margin: 0; }
+    h3 { margin-top: 0; text-align: center; font-size: 16px; }
+    .control-group { margin-bottom: 15px; }
+    .control-group label { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; color: #ccc;}
+    input[type="range"] { width: 100%; cursor: pointer; accent-color: #ff9800; }
     button { 
         padding: 10px; width: 100%; cursor: pointer; border-radius: 6px; 
-        border: none; background: #333; color: white; font-weight: bold;
+        border: none; background: #444; color: white; font-weight: bold; margin-bottom: 15px;
     }
-    button:hover { background: #555; }
+    button.active { background: #d32f2f; }
+    button.inactive { background: #2e7d32; }
+    
+    .preset-row { display: flex; gap: 10px; margin-top: 15px; }
+    .preset-row button { margin-bottom: 0; background: #555; font-size: 12px; padding: 8px; }
+    .preset-row button:hover { background: #777; }
+    
+    #sliders { transition: opacity 0.2s; }
   </style>
 </head>
 <body>
-  <h3 style="margin-top: 0;">PDF Theme</h3>
+  <h3>PDF Theme Settings</h3>
   <button id="toggleBtn">Loading...</button>
+  
+  <div id="sliders">
+      <div class="control-group">
+        <label><span>Brightness</span> <span id="val-brightness">95%</span></label>
+        <input type="range" id="brightness" min="50" max="150" value="95">
+      </div>
+      <div class="control-group">
+        <label><span>Contrast</span> <span id="val-contrast">90%</span></label>
+        <input type="range" id="contrast" min="50" max="150" value="90">
+      </div>
+      <div class="control-group">
+        <label><span>Warmth</span> <span id="val-warmth">30%</span></label>
+        <input type="range" id="warmth" min="0" max="100" value="30">
+      </div>
+      <div class="control-group">
+        <label><span>Graininess</span> <span id="val-graininess">0%</span></label>
+        <input type="range" id="graininess" min="0" max="100" value="0">
+      </div>
+  </div>
+
+  <!-- Reset Button Only -->
+  <div class="preset-row">
+    <button id="resetBtn">Reset to Defaults</button>
+  </div>
+  
   <script src="popup.js"></script>
 </body>
 </html>
